@@ -2,7 +2,7 @@
 using namespace std;
 void displayGrid(vector<vector<int>> grid)
 {
-    cout << "\n\n";
+    cout << "\n\n\t\t\t";
     int n = grid.size();
     for (int i = 0; i < n; i++)
     {
@@ -16,7 +16,8 @@ void displayGrid(vector<vector<int>> grid)
                 cout << 'O';
             cout << "  |  ";
         }
-        cout << "\n.................\n";
+        cout << "\n\t\t\t.................\n";
+        cout << "\t\t\t";
     }
 }
 int checkWin(vector<vector<int>> grid)
@@ -65,8 +66,6 @@ int checkWin(vector<vector<int>> grid)
 }
 int checkMove(vector<vector<int>> &grid, int row, int col, int player, int &count)
 {
-    row--;
-    col--;
     if (row < 0 || row > 2 || col < 0 || col > 2 || grid[row][col] != -1)
     {
         return -1;
@@ -76,14 +75,6 @@ int checkMove(vector<vector<int>> &grid, int row, int col, int player, int &coun
     displayGrid(grid);
     if (checkWin(grid) > 0)
     {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                cout << grid[i][j] << "\t";
-            }
-            cout << "\n";
-        }
         return player; // 0 1
     }
     return 3;
@@ -96,7 +87,7 @@ void playGame(vector<vector<int>> grid, string a, string b, int choice, map<stri
         mp[b] = 0;
     int count = 0;
     int turn = 0; // 0 1
-    int x, y, k;
+    int x, y, k, cell;
     int draw = 1;
     set<int> st;
     for (int i = 1; i <= 9; i++)
@@ -105,15 +96,17 @@ void playGame(vector<vector<int>> grid, string a, string b, int choice, map<stri
     }
     while (count != 9)
     {
-        cout << "\nIts Turn for Player ";
+        cout << "\n\t\t\tIts Turn for Player ";
         if (turn == 0)
             cout << a;
         else
             cout << b;
         if ((choice == 1) || (choice == 2 && turn == 0))
         {
-            cout << "\n\nEnter the Coordinates between {(1,1) and (3,3)}:\t";
-            cin >> x >> y;
+            cout << "\n\n\t\t\tEnter the Cell No. :\t";
+            cin >> cell; // 1 2 3 4 5 6 7 8 9
+            x = (cell - 1) / 3;
+            y = (cell - 1) % 3;
         }
         if (choice == 2 && turn == 1)
         {
@@ -134,32 +127,33 @@ void playGame(vector<vector<int>> grid, string a, string b, int choice, map<stri
         }
         else
         {
+            cout << x << y << " ";
             k = checkMove(grid, x, y, turn, count);
             if (k == -1)
             {
-                cout << "\n\nInvalid Move";
+                cout << "\n\n\t\t\tInvalid Move";
                 continue;
             }
         }
         turn = (turn + 1) % 2;
         if (k == 0)
         {
-            cout << "\nPlayer " << a << " has Won";
+            cout << "\n\t\t\tPlayer " << a << " has Won";
             mp[a]++;
             round++;
             break;
         }
         else if (k == 1)
         {
-            cout << "\nPlayer " << b << " has Won";
+            cout << "\n\t\t\tPlayer " << b << " has Won";
             round++;
             mp[b]++;
             break;
         }
     }
-    if (count != 9 && k != 0 && k != 1)
+    if (count == 9 && k != 0 && k != 1)
     {
-        cout << "\n\n Its a Draw";
+        cout << "\n\n\t\t\tIts a Draw";
     }
 }
 int main()
@@ -168,15 +162,21 @@ int main()
 
     cout << "\t\t\t..........Welcome to TIC TAC TOE Game..........";
     cout << "\n\n\n";
+    cout << "\t\t\tChoose a cell numbered from 1 to 9 as below and play \n\n ";
+    cout << " \t\t\t 1 | 2 | 3 \n";
+    cout << " \t\t\t -------------- \n ";
+    cout << " \t\t\t 4 | 5 | 6 \n";
+    cout << " \t\t\t -------------- \n ";
+    cout << " \t\t\t 7 | 8 | 9 \n\n ";
     string name1, name2;
     int choice, round = 0;
     char pass = 'y';
     map<string, int> mp;
     do
     {
-        cout << "Press 0: for exit:";
-        cout << "\nPress 1: for player human vs human:";
-        cout << "\nPress 2: for player human vs computer:\t";
+        cout << "\n\t\t\tPress 0: for exit:";
+        cout << "\n\t\t\tPress 1: for player human vs human:";
+        cout << "\n\t\t\tPress 2: for player human vs computer:\t";
         cin >> choice;
         if (choice == 0)
         {
@@ -187,14 +187,14 @@ int main()
 
             if (choice == 1)
             {
-                cout << "\nEnter name of Player 1:\t";
+                cout << "\n\t\t\tEnter name of Player 1:\t";
                 cin >> name1;
-                cout << "\nEnter name of Player 2:\t";
+                cout << "\n\t\t\tEnter name of Player 2:\t";
                 cin >> name2;
             }
             else // if (choice == 2)
             {
-                cout << "\nEnter name of Player:\t";
+                cout << "\n\t\t\tEnter name of Player:\t";
                 cin >> name1;
                 name2 = "Computer";
             }
@@ -204,21 +204,21 @@ int main()
         }
         else
         {
-            cout << "\n\nxxxxxx Invalid Choice xxxxxx ";
+            cout << "\n\n\t\t\txxxxxx Invalid Choice xxxxxx ";
         }
         cout << "\n";
-        cout << "\n\nDo You want to Continue? Y or y for YES otherwise its No:\t";
+        cout << "\n\n\t\t\tDo You want to Continue? Y or y for YES otherwise its No:\t";
         cin >> pass;
     } while (pass == 'y' || pass == 'Y');
     if (round > 0)
     {
-        cout << "\n\n\n.......ScoreBoard........";
-        cout << "\nSl.\tName\tScore";
+        cout << "\n\n\n\t\t\t.......ScoreBoard........";
+        cout << "\n\t\t\tSl.\tName\t\tScore";
         int count = 0;
         for (auto it : mp)
         {
-            cout << "\n"
-                 << count << ".\t" << it.first << "\t" << it.second;
+            cout << "\n\t\t\t"
+                 << count << ".\t" << it.first << "\t\t" << it.second;
         }
     }
     return 0;
