@@ -3,7 +3,7 @@ using namespace std;
 void displayGrid(vector<vector<int>> grid)
 {
     cout << "\n\n\t\t\t";
-    int n = grid.size();
+    int n = 3;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
@@ -79,7 +79,7 @@ int checkMove(vector<vector<int>> &grid, int row, int col, int player, int &coun
     }
     return 3;
 }
-void playGame(vector<vector<int>> grid, string a, string b, int choice, map<string, int> &mp, int &round)
+void playGame(vector<vector<int>> grid, const string a, const string b, int choice, map<string, int> &mp, int &round)
 {
     if (mp.count(a) == 0)
         mp[a] = 0;
@@ -88,7 +88,6 @@ void playGame(vector<vector<int>> grid, string a, string b, int choice, map<stri
     int count = 0;
     int turn = 0; // 0 1
     int x, y, k, cell;
-    int draw = 1;
     set<int> st;
     for (int i = 1; i <= 9; i++)
     {
@@ -112,7 +111,7 @@ void playGame(vector<vector<int>> grid, string a, string b, int choice, map<stri
         {
             do
             {
-                int randnumber = (rand() % st.size());
+                int randnumber = (int)(rand() % st.size());
                 x = (randnumber / 3) + 1;
                 y = (randnumber % 3) + 1;
                 k = checkMove(grid, x, y, turn, count);
@@ -123,11 +122,11 @@ void playGame(vector<vector<int>> grid, string a, string b, int choice, map<stri
                     st.erase(randnumber);
                     break;
                 }
-            } while (1);
+            } while (true);
         }
         else
         {
-            cout << x << y << " ";
+            //cout << x << y << " ";
             k = checkMove(grid, x, y, turn, count);
             if (k == -1)
             {
@@ -158,11 +157,18 @@ void playGame(vector<vector<int>> grid, string a, string b, int choice, map<stri
 }
 int main()
 {
-    srand(time(NULL));
+    srand(time(nullptr));
 
     cout << "\t\t\t..........Welcome to TIC TAC TOE Game..........";
     cout << "\n\n\n";
-    cout << "\t\t\tChoose a cell numbered from 1 to 9 as below and play \n\n ";
+    cout << "\t\t\t..........Rules of the Game:-  ";
+    cout << "\n\t\t1. The game must be played by two players (human vs human/computer).";
+    cout << "\n\t\t2. Both players mark their cells with the letters 'O' and 'X' .";
+    cout << "\n\t\t3. The game ends when one of the players fills an entire row, column or diagonal with)";
+    cout << "\n\t\t   either the character ('O' or 'X') of that player.";
+    cout << "\n\t\t4. If no one wins, the match is considered a draw.";
+    cout << "\n\n\n\t\t\tLets Play the Game";
+    cout << "\n\t\t\tChoose a cell numbered from 1 to 9 as below and play \n\n ";
     cout << " \t\t\t 1 | 2 | 3 \n";
     cout << " \t\t\t -------------- \n ";
     cout << " \t\t\t 4 | 5 | 6 \n";
@@ -215,7 +221,7 @@ int main()
         cout << "\n\n\n\t\t\t.......ScoreBoard........";
         cout << "\n\t\t\tSl.\tName\t\tScore";
         int count = 0;
-        for (auto it : mp)
+        for (const auto &it : mp)
         {
             cout << "\n\t\t\t"
                  << count << ".\t" << it.first << "\t\t" << it.second;
