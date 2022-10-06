@@ -126,7 +126,7 @@ void playGame(vector<vector<int>> grid, const string a, const string b, int choi
         }
         else
         {
-            //cout << x << y << " ";
+            // cout << x << y << " ";
             k = checkMove(grid, x, y, turn, count);
             if (k == -1)
             {
