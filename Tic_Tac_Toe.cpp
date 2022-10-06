@@ -143,6 +143,7 @@ void playGame(vector<vector<int>> grid, const string a, const string b, int choi
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             //cout << x << y << " ";
 =======
             cout << x << y << " ";
@@ -150,6 +151,9 @@ void playGame(vector<vector<int>> grid, const string a, const string b, int choi
 =======
             //cout << x << y << " ";
 >>>>>>> 8421087... .
+=======
+            // cout << x << y << " ";
+>>>>>>> 8dfdc1f... Commented lines
             k = checkMove(grid, x, y, turn, count);
             if (k == -1)
             {
