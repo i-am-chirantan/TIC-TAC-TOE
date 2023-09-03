@@ -3,15 +3,9 @@ using namespace std;
 void displayGrid(vector<vector<int>> grid)
 {
     cout << "\n\n\t\t\t";
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     int n = 3;
-=======
-    int n = grid.size();
->>>>>>> 1f30eff... Indentation Add
-=======
-    int n = 3;
->>>>>>> 8421087... .
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
@@ -96,13 +90,9 @@ void playGame(vector<vector<int>> grid, const string a, const string b, int choi
     int count = 0;
     int turn = 0; // 0 1
     int x, y, k, cell;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
     int draw = 1;
->>>>>>> 1f30eff... Indentation Add
-=======
->>>>>>> 8421087... .
+
     set<int> st;
     for (int i = 1; i <= 9; i++)
     {
@@ -141,19 +131,16 @@ void playGame(vector<vector<int>> grid, const string a, const string b, int choi
         }
         else
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            //cout << x << y << " ";
-=======
-            cout << x << y << " ";
->>>>>>> 1f30eff... Indentation Add
-=======
-            //cout << x << y << " ";
->>>>>>> 8421087... .
-=======
             // cout << x << y << " ";
->>>>>>> 8dfdc1f... Commented lines
+
+            cout << x << y << " ";
+
+            // cout << x << y << " ";
+
+            // cout << x << y << " ";
+
+            // cout << x << y << " ";
+
             k = checkMove(grid, x, y, turn, count);
             if (k == -1)
             {
@@ -188,10 +175,7 @@ int main()
 
     cout << "\t\t\t..........Welcome to TIC TAC TOE Game..........";
     cout << "\n\n\n";
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 8421087... .
+
     cout << "\t\t\t..........Rules of the Game:-  ";
     cout << "\n\t\t1. The game must be played by two players (human vs human/computer).";
     cout << "\n\t\t2. Both players mark their cells with the letters 'O' and 'X' .";
@@ -200,12 +184,9 @@ int main()
     cout << "\n\t\t4. If no one wins, the match is considered a draw.";
     cout << "\n\n\n\t\t\tLets Play the Game";
     cout << "\n\t\t\tChoose a cell numbered from 1 to 9 as below and play \n\n ";
-<<<<<<< HEAD
-=======
+
     cout << "\t\t\tChoose a cell numbered from 1 to 9 as below and play \n\n ";
->>>>>>> 1f30eff... Indentation Add
-=======
->>>>>>> 8421087... .
+
     cout << " \t\t\t 1 | 2 | 3 \n";
     cout << " \t\t\t -------------- \n ";
     cout << " \t\t\t 4 | 5 | 6 \n";
