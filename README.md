@@ -1,8 +1,5 @@
 # TIC-TAC-TOE
-TIC-TAC-TOE-game
-# Tic-Tac-Toe Game
 
-![Tic-Tac-Toe](tic_tac_toe_image.png)
 
 ## Introduction
 
@@ -37,3 +34,4 @@ To compile and run the program, you can use the following commands:
 ```bash
 g++ tic_tac_toe.cpp -o tic_tac_toe
 ./tic_tac_toe
+```
